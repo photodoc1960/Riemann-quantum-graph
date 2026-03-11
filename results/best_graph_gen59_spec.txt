@@ -1,0 +1,115 @@
+BEST GRAPH SPECIFICATION — Generation 59, Score 0.803561
+=========================================================
+Saved: 2026-03-10
+Checkpoint: results/checkpoint_gen_59.pkl
+
+TOPOLOGY
+--------
+Vertices: 9
+Edges: 18
+4-regular graph (all vertices degree 4)
+
+Adjacency matrix:
+[[0 0 1 0 1 1 1 0 0]
+ [0 0 0 1 0 1 0 1 1]
+ [1 0 0 1 0 1 0 0 1]
+ [0 1 1 0 1 0 1 0 0]
+ [1 0 0 1 0 0 1 1 0]
+ [1 1 1 0 0 0 0 1 0]
+ [1 0 0 1 1 0 0 0 1]
+ [0 1 0 0 1 1 0 0 1]
+ [0 1 1 0 0 0 1 1 0]]
+
+EDGE LENGTHS (18 edges, upper-triangle order)
+---------------------------------------------
+e 0: 0.688723617801860
+e 1: 1.091601107576957
+e 2: 1.599166717786604
+e 3: 1.933491638373371
+e 4: 2.382592259926023
+e 5: 2.548580230135827
+e 6: 2.815132195656602
+e 7: 2.925648005218924
+e 8: 3.115483955726443
+e 9: 3.345806246176940
+e10: 3.412072006190274
+e11: 3.587873568746045
+e12: 3.689872599182173
+e13: 3.737196693009150
+e14: 3.825576529329300
+e15: 3.944954097948040
+e16: 4.051515203193452
+e17: 4.084638875358880
+
+Total length: 52.784444
+
+SCATTERING
+----------
+All 9 vertices: pure Neumann S_ij = 2/d - delta_ij (d=4)
+No TRS breaking (phase extraction bug meant search never explored non-Neumann)
+
+S_vertex = [[-0.5, 0.5, 0.5, 0.5],
+            [ 0.5,-0.5, 0.5, 0.5],
+            [ 0.5, 0.5,-0.5, 0.5],
+            [ 0.5, 0.5, 0.5,-0.5]]
+
+PSLQ LOG-PRIME ANALYSIS
+------------------------
+All 18 edge lengths returned residual=inf — no integer combinations of
+ln(2), ln(3), ..., ln(47) found. PSLQ may need precision recovery fix
+or these lengths are genuinely non-arithmetic.
+
+Symbolic regression best formula: ln(p_e), residual = 0.0188
+
+SPECTRUM (847 eigenvalues at k_max=80)
+--------------------------------------
+First 30:
+k 0 = 0.4915435314
+k 1 = 0.5161257186
+k 2 = 0.5958206825
+k 3 = 0.7665006075
+k 4 = 0.7969706880
+k 5 = 0.8518053215
+k 6 = 0.8770731080
+k 7 = 0.9531305399
+k 8 = 1.0444958900
+k 9 = 1.1348614004
+k10 = 1.1656405004
+k11 = 1.2190719113
+k12 = 1.5803783008
+k13 = 1.6449177203
+k14 = 1.6709470063
+k15 = 1.7124360091
+k16 = 1.7606836704
+k17 = 1.8416708082
+k18 = 1.9634529730
+k19 = 2.0181064828
+k20 = 2.0391005086
+k21 = 2.2010564186
+k22 = 2.2994034085
+k23 = 2.3310983199
+k24 = 2.4070069577
+k25 = 2.4295525248
+k26 = 2.4738828217
+k27 = 2.5392069219
+k28 = 2.8178966855
+k29 = 3.1132576963
+... (817 more up to k_max=80)
+
+RIEMANN ZERO COMPARISON
+------------------------
+Graph eigenvalues start at k~0.49, Riemann zeros at k~14.13.
+The 0.8036 score comes from statistical properties (GUE spacing
+distribution, pair correlation) rather than direct eigenvalue matching.
+No direct alignment of individual eigenvalues to zeros.
+
+SCORING BREAKDOWN (weights)
+----------------------------
+0.35 * absolute_match + 0.25 * spacing + 0.20 * pair_correlation + 0.20 * prime_overlap
+Coverage penalty applied to statistical components only.
+
+NOTES
+-----
+- All scattering is Neumann due to phase extraction bug (now fixed)
+- Next run should explore TRS-breaking scattering
+- PSLQ returning all-inf suggests either broken PSLQ or non-arithmetic lengths
