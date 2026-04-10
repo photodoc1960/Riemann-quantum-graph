@@ -12,11 +12,18 @@ from __future__ import annotations
 
 # Set BLAS to single-threaded BEFORE numpy import.
 # For 36×36 matrices, single-thread is faster (no thread-pool overhead).
-# Frees all 16 cores for multiprocessing in differential_evolution.
+# Frees all cores for multiprocessing in differential_evolution.
+# Also prevents MKL thread-pool state corruption on fork().
 import os
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_THREADING_LAYER"] = "sequential"
+
+# Use forkserver to avoid inheriting MKL/BLAS thread-pool state.
+# Must be set before any multiprocessing usage.
+import multiprocessing
+multiprocessing.set_start_method("forkserver", force=True)
 
 import argparse
 import pickle

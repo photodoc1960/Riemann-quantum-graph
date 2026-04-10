@@ -485,6 +485,9 @@ class Orchestrator:
 
         for i in range(n_optimize):
             graph = population[i]
+            # Brief cooldown between graphs to prevent thermal throttling
+            if i > 0:
+                time.sleep(5)
             try:
                 opt_result = joint_optimize(
                     graph, scorer,

@@ -195,7 +195,7 @@ def joint_optimize(
     n_compare: int,
     max_iter: int = 300,
     seed: int | None = None,
-    workers: int = -1,
+    workers: int = 10,
 ) -> OptimizationResult:
     """Optimize both edge lengths and scattering phases jointly.
 
@@ -206,7 +206,7 @@ def joint_optimize(
         n_compare: Number of zeros to compare.
         max_iter: Maximum iterations.
         workers: Number of parallel workers for DE population evaluation.
-                 -1 uses all available CPU cores.
+                 Default 10 leaves thermal headroom on sustained runs.
     """
     bounds, n_edges, n_phases = _build_joint_bounds(graph)
 

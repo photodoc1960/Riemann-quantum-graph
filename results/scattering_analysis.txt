@@ -1,0 +1,169 @@
+======================================================================
+SCATTERING MATRIX STRUCTURE ANALYSIS
+======================================================================
+Graph: C_7 with U(2) scattering
+Score: 0.896916
+N zeros: 100
+MAD: 0.32653132354179576
+Max residual: 1.6067013321286083
+
+1. INDIVIDUAL SCATTERING MATRICES
+--------------------------------------------------
+  Vertex 0:
+    det = 1.000000 * exp(i * -2.290675)  ≈ -8/11π
+    eigenvalue phases: [1.494438, 2.498073]
+      1.494438 ≈ 9/19π
+      2.498073 ≈ 4/5π
+    trace = -0.723704 + 1.597101i
+    |trace| = 1.753419
+    distance from Neumann = 2.267403
+    edge length = 1.252831
+
+  Vertex 1:
+    det = 1.000000 * exp(i * -0.474503)  ≈ -3/20π
+    eigenvalue phases: [-1.904525, 1.430022]
+      -1.904525 ≈ -11/18π
+      1.430022 ≈ 5/11π
+    trace = -0.187258 + 0.045280i
+    |trace| = 0.192655
+    distance from Neumann = 2.215519
+    edge length = 4.132815
+
+  Vertex 2:
+    det = 1.000000 * exp(i * -3.056770)  
+    eigenvalue phases: [0.416589, 2.809826]
+      0.416589 ≈ 2/15π
+      2.809826 ≈ 17/19π
+    trace = -0.030994 + 0.730358i
+    |trace| = 0.731015
+    distance from Neumann = 1.296371
+    edge length = 2.525013
+
+  Vertex 3:
+    det = 1.000000 * exp(i * -2.637200)  ≈ -16/19π
+    eigenvalue phases: [-2.962900, 0.325700]
+      -2.962900 ≈ -17/18π
+      0.325700 ≈ 2/19π
+    trace = -0.036650 + 0.142229i
+    |trace| = 0.146875
+    distance from Neumann = 2.102635
+    edge length = 2.171419
+
+  Vertex 4:
+    det = 1.000000 * exp(i * -0.041286)  
+    eigenvalue phases: [-1.697017, 1.655731]
+      -1.697017 ≈ -7/13π
+      1.655731 ≈ 10/19π
+    trace = -0.210718 + 0.004350i
+    |trace| = 0.210763
+    distance from Neumann = 1.992772
+    edge length = 0.801254
+
+  Vertex 5:
+    det = 1.000000 * exp(i * 3.057061)  
+    eigenvalue phases: [0.169220, 2.887841]
+      0.169220 ≈ 1/19π
+      2.887841 ≈ 11/12π
+    trace = 0.017739 + 0.419451i
+    |trace| = 0.419826
+    distance from Neumann = 2.783327
+    edge length = 2.569627
+
+  Vertex 6:
+    det = 1.000000 * exp(i * 2.378718)  
+    eigenvalue phases: [-0.297185, 2.675902]
+      -0.297185 ≈ -1/11π
+      2.675902 ≈ 17/20π
+    trace = 0.062653 + 0.156210i
+    |trace| = 0.168306
+    distance from Neumann = 1.027587
+    edge length = 1.153274
+
+
+2. CROSS-VERTEX PATTERNS
+--------------------------------------------------
+  Determinant phases: ['-2.2907', '-0.4745', '-3.0568', '-2.6372', '-0.0413', '3.0571', '2.3787']
+    Std dev: 2.249918
+    Are they constant? NO (std < 0.05)
+    Sum of det phases: -3.064654
+    Sum ≈ rational×π? NO
+
+  Eigenvalue phase sums:
+    Per-vertex sums: ['3.9925', '-0.4745', '3.2264', '-2.6372', '-0.0413', '3.0571', '2.3787']
+    Total sum: 9.501717
+    Total ≈ rational×π? NO
+
+  Traces: ['-0.7237+1.5971i', '-0.1873+0.0453i', '-0.0310+0.7304i', '-0.0366+0.1422i', '-0.2107+0.0044i', '0.0177+0.4195i', '0.0627+0.1562i']
+    |traces|: ['1.7534', '0.1927', '0.7310', '0.1469', '0.2108', '0.4198', '0.1683']
+    Mean |trace|: 0.517551
+    Neumann |trace| = 0 (for reference)
+
+  Frobenius distances from Neumann:
+    Per vertex: ['2.2674', '2.2155', '1.2964', '2.1026', '1.9928', '2.7833', '1.0276']
+    Mean: 1.955088
+    Std: 0.556610
+    Max: 2.783327
+    The matrices are FAR from Neumann
+
+
+3. MONODROMY MATRIX (product around cycle)
+--------------------------------------------------
+  M = S_1 * S_2 * ... * S_n
+  det(M) = 1.000000 * exp(i * -3.064654)
+    det phase ≈ rational×π? NO
+  eigenvalue phases: [-3.141590, 0.076936]
+    -3.141590 ≈ -1π
+    0.076936 
+  trace = -0.002958 + 0.076858i
+  |trace| = 0.076915
+  Is M = ±I? False
+
+
+4. EDGE LENGTH / SCATTERING CORRELATIONS
+--------------------------------------------------
+  Corr(edge_length, det_phase): -0.0789
+  Corr(edge_length, |trace|): -0.2400
+  Corr(edge_length, dist_from_Neumann): 0.2943
+
+  L_v * det_phase_v products: ['-2.8698', '-1.9610', '-7.7184', '-5.7265', '-0.0331', '7.8555', '2.7433']
+    Std dev: 4.857855
+    Are they constant? NO
+
+
+5. SU(2) vs U(2) STRUCTURE
+--------------------------------------------------
+  SU(2) ⊂ U(2) has det(S) = 1 (zero det phase).
+  If the optimizer prefers SU(2), det phases would be ~0.
+
+  Vertices with |det_phase| < 0.1: 1/7
+  Vertices with |det_phase| < 0.3: 1/7
+  The matrices are genuinely U(2)
+
+
+6. REFLECTION vs TRANSMISSION
+--------------------------------------------------
+  For degree-2 vertices, S = [[r, t'], [t, r']]
+  Neumann: r=0, t=1 (pure transmission)
+  How much reflection did the optimizer introduce?
+
+  Vertex 0: |r|=0.9460, |t|=0.3241, |r|²=0.8950, |t|²=0.1050  (mostly reflect)
+  Vertex 1: |r|=0.1311, |t|=0.9914, |r|²=0.0172, |t|²=0.9828  (mostly transmit)
+  Vertex 2: |r|=0.3680, |t|=0.9298, |r|²=0.1355, |t|²=0.8645  (mostly transmit)
+  Vertex 3: |r|=0.4361, |t|=0.8999, |r|²=0.1902, |t|²=0.8098  (mostly transmit)
+  Vertex 4: |r|=0.2893, |t|=0.9572, |r|²=0.0837, |t|²=0.9163  (mostly transmit)
+  Vertex 5: |r|=0.2149, |t|=0.9766, |r|²=0.0462, |t|²=0.9538  (mostly transmit)
+  Vertex 6: |r|=0.5336, |t|=0.8457, |r|²=0.2847, |t|²=0.7153  (mostly transmit)
+
+  Mean |r| = 0.4170, Mean |t| = 0.8464
+  Mean |r|² = 0.1739, Mean |t|² = 0.7164
+  The optimizer introduced significant reflection
+
+
+======================================================================
+SUMMARY
+======================================================================
+  Structural patterns found:
+    - Matrices far from Neumann
+    - Significant reflection: mean |r|=0.417
+
+Results saved to results/scattering_analysis.txt
