@@ -9,3 +9,7 @@ build/
 *.pkl
 .claude/
 *.log
+
+# Local reviewer feedback artifacts (private)
+feedback1.png
+feedback2.png
