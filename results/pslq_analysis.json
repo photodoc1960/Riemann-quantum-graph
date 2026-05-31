@@ -1,0 +1,25 @@
+{
+  "summary": "Analyzed 7 vertex scattering matrices from best U(2) graph",
+  "significant_relations": [],
+  "phase_rationals": [],
+  "pi_multiples": [],
+  "monodromy_analysis": {
+    "det_magnitude": 0.9999999999999998,
+    "det_phase": -3.064653890385695,
+    "trace_real": -0.002958141325560976,
+    "trace_imag": 0.07685805734097237,
+    "eigenvalue_phases": [
+      -3.1415902395763062,
+      0.07693634919061197
+    ],
+    "powers_equal_I_or_neg_I": {},
+    "near_minus_one": true
+  },
+  "edge_length_analysis": {
+    "pslq_ln_prime_relations": [],
+    "total_length": 14.606232957901517,
+    "total_length_findings": [],
+    "length_rationals": []
+  },
+  "verdict": "PARTIALLY_STRUCTURED"
+}
