@@ -219,7 +219,7 @@ This research did not involve human participants, animals, or biological materia
 
 ## Data Availability
 
-All code, optimization results, and verification data supporting the findings of this study are available at the public repository https://github.com/photodoc1960/Reimann-quantum-graph.
+All code, optimization results, and verification data supporting the findings of this study are available at the public repository https://github.com/photodoc1960/Riemann-quantum-graph.
 
 ---
 

@@ -79,8 +79,8 @@ Earlier evolutionary-search trajectory data (`trajectory.jsonl`, `residuals.json
 ## Installation
 
 ```bash
-git clone https://github.com/photodoc1960/Reimann-quantum-graph.git
-cd Reimann-quantum-graph
+git clone https://github.com/photodoc1960/Riemann-quantum-graph.git
+cd Riemann-quantum-graph
 pip install -r requirements.txt
 python -m pytest riemann_qg/tests/ -v
 ```
@@ -143,7 +143,7 @@ If you use this code or build on these results, please cite the manuscript and t
 
 Manuscript citation will be added once a venue is finalized. For now:
 
-> J. D. Slater. *Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs.* Manuscript v3, May 2026. Code and data: https://github.com/photodoc1960/Reimann-quantum-graph.
+> J. D. Slater. *Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs.* Manuscript v3, May 2026. Code and data: https://github.com/photodoc1960/Riemann-quantum-graph.
 
 ---
 
