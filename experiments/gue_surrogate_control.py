@@ -419,6 +419,8 @@ def _aggregate_and_verdict(
                  if r["best_mad_mean_spacings"] < 90]
     best_scores = [r["best_score"] for r in results
                    if r["best_mad_mean_spacings"] < 90]
+    best_n_matched = [r.get("best_n_matched", 0) for r in results
+                      if r["best_mad_mean_spacings"] < 90]
 
     if len(best_mads) < 3:
         verdict = "INSUFFICIENT_DATA"
@@ -444,6 +446,18 @@ def _aggregate_and_verdict(
         "best_mad_median": float(np.median(best_mads)),
         "best_score_mean": float(np.mean(best_scores)),
         "best_score_std": float(np.std(best_scores)),
+        # Matched-eigenvalue counts: how many of the N_ZEROS targets the
+        # optimizer was able to place a graph eigenvalue against (within
+        # the +/-1 mean-spacing window). Asymmetry with the Riemann
+        # n_matched (typically ~74/100 in the headline result) would mean
+        # surrogate MADs are computed over different subset sizes than
+        # the Riemann MAD, which would need to be acknowledged in any
+        # comparison.
+        "n_matched_mean": float(np.mean(best_n_matched)),
+        "n_matched_std": float(np.std(best_n_matched)),
+        "n_matched_min": int(np.min(best_n_matched)),
+        "n_matched_max": int(np.max(best_n_matched)),
+        "n_matched_median": float(np.median(best_n_matched)),
     }
 
     riemann_mad = riemann_baseline["mad_mean_spacings"]
@@ -686,6 +700,12 @@ def run_experiment(
         log(f"  Min:                        {d['best_mad_min']:.4f}")
         log(f"  Max:                        {d['best_mad_max']:.4f}")
         log(f"  Riemann z-score:            {d['riemann_vs_surrogate_z']:.2f}")
+        log(f"Surrogate matched-eigenvalue counts (out of {N_ZEROS}):")
+        log(f"  Mean:                       {d['n_matched_mean']:.1f}")
+        log(f"  Std:                        {d['n_matched_std']:.1f}")
+        log(f"  Median:                     {d['n_matched_median']:.1f}")
+        log(f"  Min:                        {d['n_matched_min']}")
+        log(f"  Max:                        {d['n_matched_max']}")
 
     log("")
     log(f"VERDICT: {summary['verdict']}")

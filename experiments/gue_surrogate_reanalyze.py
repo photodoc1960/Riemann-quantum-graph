@@ -133,6 +133,17 @@ def main() -> None:
         print(f"  z-score (Riemann):      {d['riemann_vs_surrogate_z']:+.2f}")
         print(f"  Cohen's d:              {d['cohens_d']:+.2f}")
         print("")
+        # Matched-eigenvalue counts: if surrogates match meaningfully
+        # fewer eigenvalues than the Riemann case (74/100 in the manuscript
+        # headline), the MAD comparison is being computed over different
+        # subset sizes and that asymmetry should be reported alongside.
+        print(f"Surrogate matched-eigenvalue counts (out of {N_ZEROS}):")
+        print(f"  mean:                   {d['n_matched_mean']:.1f}")
+        print(f"  std:                    {d['n_matched_std']:.1f}")
+        print(f"  median:                 {d['n_matched_median']:.1f}")
+        print(f"  min:                    {d['n_matched_min']}")
+        print(f"  max:                    {d['n_matched_max']}")
+        print("")
 
     print(f"VERDICT: {summary['verdict']}")
     print("")
