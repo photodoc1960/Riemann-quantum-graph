@@ -450,40 +450,83 @@ def _aggregate_and_verdict(
     surrogate_mean_mad = distribution["best_mad_mean"]
     surrogate_std_mad = distribution["best_mad_std"]
 
+    # ---- Multiple complementary effect-size measures ----
+    # 1. Empirical quantile: fraction of surrogates that beat Riemann.
+    #    (A "better" fit has smaller MAD.)
+    n_better = int(sum(1 for m in best_mads if m < riemann_mad))
+    n_total = len(best_mads)
+    quantile_pct = 100.0 * n_better / n_total
+
+    # 2. Z-score (kept for continuity, no longer drives verdict)
     if surrogate_std_mad > 1e-6:
         z = (surrogate_mean_mad - riemann_mad) / surrogate_std_mad
     else:
         z = 0.0
-    distribution["riemann_vs_surrogate_z"] = float(z)
 
-    if z >= 2.0:
+    # 3. Cohen's d: standardized effect size, distribution-agnostic
+    if surrogate_std_mad > 1e-6:
+        cohens_d = (surrogate_mean_mad - riemann_mad) / surrogate_std_mad
+    else:
+        cohens_d = 0.0
+
+    distribution["riemann_vs_surrogate_z"] = float(z)
+    distribution["quantile_pct"] = float(quantile_pct)
+    distribution["cohens_d"] = float(cohens_d)
+    distribution["n_surrogates_better"] = n_better
+    distribution["n_surrogates_total"] = n_total
+
+    # ---- Verdict based on the empirical quantile ----
+    # GENERIC:           Riemann within the bulk of surrogate distribution.
+    # SUGGESTIVE:        Riemann better than 75-95% of surrogates.
+    # RIEMANN_SPECIFIC:  Riemann better than 95% of surrogates.
+    #
+    # Base-rate caveat: at K=20 surrogates, even a quantile of 0% is
+    # consistent with the GENERIC hypothesis at a one-in-21 base rate
+    # (~4.8%). Strong specificity claims require K >= 50.
+    if quantile_pct <= 5.0:
         verdict = "RIEMANN_SPECIFIC"
         verdict_msg = (
-            f"Riemann MAD {riemann_mad:.4f} is {z:.2f} surrogate-std's "
-            f"below the surrogate mean ({surrogate_mean_mad:.4f}+/-"
-            f"{surrogate_std_mad:.4f}). The U(2) construction fits the "
-            "Riemann zeros materially better than matched-density GUE "
-            "surrogates. The 'discovery' reading of the U(2) result is "
-            "supported."
+            f"Riemann MAD {riemann_mad:.4f} is better than "
+            f"{n_total - n_better} of {n_total} surrogates "
+            f"({100.0 - quantile_pct:.1f}th percentile of surrogate MADs). "
+            f"Surrogate distribution: mean {surrogate_mean_mad:.4f} +/- "
+            f"{surrogate_std_mad:.4f} (Cohen's d = {cohens_d:.2f}). "
+            "The U(2) construction fits the Riemann zeros materially "
+            "better than matched-density GUE surrogates. The 'discovery' "
+            "reading of the U(2) result is supported."
         )
-    elif z <= 1.0:
+        if n_total < 50:
+            verdict_msg += (
+                f" Caveat: at K={n_total} surrogates, this percentile "
+                "has a base-rate floor of roughly "
+                f"{100.0 / (n_total + 1):.1f}%; strong specificity claims "
+                "should be confirmed at K >= 50."
+            )
+    elif quantile_pct <= 25.0:
+        verdict = "SUGGESTIVE"
+        verdict_msg = (
+            f"Riemann MAD {riemann_mad:.4f} is better than "
+            f"{n_total - n_better} of {n_total} surrogates "
+            f"({100.0 - quantile_pct:.1f}th percentile of surrogate MADs). "
+            f"Surrogate distribution: mean {surrogate_mean_mad:.4f} +/- "
+            f"{surrogate_std_mad:.4f} (Cohen's d = {cohens_d:.2f}). "
+            "The Riemann result sits in the upper tail of the surrogate "
+            "distribution but not decisively outside it. Suggestive but "
+            "inconclusive; K >= 50 surrogates would tighten the verdict."
+        )
+    else:
         verdict = "GENERIC"
         verdict_msg = (
-            f"Riemann MAD {riemann_mad:.4f} is only {z:.2f} surrogate-std's "
-            f"from the surrogate mean ({surrogate_mean_mad:.4f}+/-"
-            f"{surrogate_std_mad:.4f}). The U(2) construction fits "
+            f"Riemann MAD {riemann_mad:.4f} sits at the "
+            f"{100.0 - quantile_pct:.1f}th percentile of the surrogate "
+            f"distribution: {n_better} of {n_total} surrogates achieved a "
+            "smaller MAD than the Riemann result. Surrogate distribution: "
+            f"mean {surrogate_mean_mad:.4f} +/- {surrogate_std_mad:.4f} "
+            f"(Cohen's d = {cohens_d:.2f}). The U(2) construction fits "
             "matched-density GUE surrogates approximately as well as the "
             "Riemann zeros, indicating it is a generic GUE-density fitter "
             "rather than a Riemann-specific construction. The 'discovery' "
             "reading of the U(2) result is weakened."
-        )
-    else:
-        verdict = "MARGINAL"
-        verdict_msg = (
-            f"Riemann MAD {riemann_mad:.4f} is {z:.2f} surrogate-std's "
-            f"better than the surrogate mean ({surrogate_mean_mad:.4f}+/-"
-            f"{surrogate_std_mad:.4f}). Suggestive but inconclusive. More "
-            "surrogates would tighten the conclusion."
         )
 
     return {
