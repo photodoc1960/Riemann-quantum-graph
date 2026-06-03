@@ -1,8 +1,8 @@
-# Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs
+# Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs: Evidence for a Riemann-Specific Construction
 
 A computational study of the spectral correspondence problem on finite quantum graphs, using the nontrivial zeros of the Riemann zeta function as a test target.
 
-This repository accompanies the manuscript *"Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs"* (J. D. Slater, draft v3 — `Primes_in_the_Wires_v3.md`). All code, optimization results, and verification data supporting the manuscript's claims are reproducible from this repository.
+This repository accompanies the manuscript *"Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs: Evidence for a Riemann-Specific Construction"* (J. D. Slater, draft v3 — `Primes_in_the_Wires_v3.md`). All code, optimization results, and verification data supporting the manuscript's claims are reproducible from this repository.
 
 ---
 
@@ -143,7 +143,7 @@ If you use this code or build on these results, please cite the manuscript and t
 
 Manuscript citation will be added once a venue is finalized. For now:
 
-> J. D. Slater. *Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs.* Manuscript v3, May 2026. Code and data: https://github.com/photodoc1960/Riemann-quantum-graph.
+> J. D. Slater. *Vertex Boundary Conditions Determine Spectral Correspondence in Quantum Graphs: Evidence for a Riemann-Specific Construction.* Manuscript v3, May 2026. Code and data: https://github.com/photodoc1960/Riemann-quantum-graph.
 
 ---
 
