@@ -150,9 +150,9 @@ def main() -> None:
         f"surrogate MAD: ${mean_surr:.3f} \\pm {std_surr:.3f}$\n"
         f"Cohen's $d$ = {cohens_d:.2f}\n"
         f"empirical quantile: {n_better}/{n_surrogates} "
-        f"({quantile_pct:.0f}\\%)\n"
+        f"({quantile_pct:.0f}%)\n"
         f"base-rate floor: $1/(K+1) \\approx "
-        f"{100.0/(n_surrogates+1):.1f}\\%$"
+        f"{100.0/(n_surrogates+1):.1f}$%"
     )
     ax.text(
         0.97, 0.55, annotation,
