@@ -1,0 +1,41 @@
+{
+  "config": {
+    "n_vertices": 7,
+    "n_targets": 100,
+    "n_surrogates": 50,
+    "n_restarts": 5,
+    "n_evals": 75000,
+    "source": "reanalysis"
+  },
+  "riemann_baseline": {
+    "best_score": 0.89502224718128,
+    "mad_mean_spacings": 0.1471206066564932,
+    "mean_score": 0.885086895432847,
+    "std_score": 0.0054771985092039255,
+    "source": "u2_scaling_results.json"
+  },
+  "n_surrogates_completed": 50,
+  "n_surrogates_valid": 50,
+  "surrogate_distribution": {
+    "n": 50,
+    "best_mad_mean": 0.2601607518208184,
+    "best_mad_std": 0.03520445497248702,
+    "best_mad_min": 0.20605340320506504,
+    "best_mad_max": 0.37741048164994084,
+    "best_mad_median": 0.2590766806197659,
+    "best_score_mean": 0.8315910130853473,
+    "best_score_std": 0.018411927880727454,
+    "n_matched_mean": 100.0,
+    "n_matched_std": 0.0,
+    "n_matched_min": 100,
+    "n_matched_max": 100,
+    "n_matched_median": 100.0,
+    "riemann_vs_surrogate_z": 3.2109613755608004,
+    "quantile_pct": 0.0,
+    "cohens_d": 3.2109613755608004,
+    "n_surrogates_better": 0,
+    "n_surrogates_total": 50
+  },
+  "verdict": "RIEMANN_SPECIFIC",
+  "verdict_message": "Riemann MAD 0.1471 is better than 50 of 50 surrogates (100.0th percentile of surrogate MADs). Surrogate distribution: mean 0.2602 +/- 0.0352 (Cohen's d = 3.21). The U(2) construction fits the Riemann zeros materially better than matched-density GUE surrogates. The 'discovery' reading of the U(2) result is supported."
+}
