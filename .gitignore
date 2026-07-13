@@ -13,3 +13,6 @@ build/
 # Local reviewer feedback artifacts (private)
 feedback1.png
 feedback2.png
+
+# LaTeX compile scratch dir (CNTP submission build)
+build_cntp/

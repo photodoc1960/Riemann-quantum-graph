@@ -17,6 +17,8 @@
 \RequirePackage{hyperref}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{float}
 
 \startlocaldefs
 \theoremstyle{plain}
@@ -51,7 +53,7 @@
 \end{aug}
 
 \begin{abstract}
-Under standard Neumann boundary conditions, the cycle graph $C_n$ is spectrally equivalent to a single circle of circumference $L = \sum_e l_e$ with spectrum $k_m = 2\pi m / L$, independent of $n$; the correspondence score against any target collapses to a one-parameter family in $L$ (Theorem~\ref{thm:neumann}). Per-vertex TRS-breaking phases, which preserve reflectionlessness, enlarge this to a two-parameter family $(L, \Phi)$ with empirical ceiling $\mathcal{S} \approx 0.72$ at $N = 100$ Riemann zeros. Replacing Neumann with general U(2) vertex scattering, in which the reflection amplitude $|\cos\theta_v|$ becomes free, breaks this ceiling: MAD $= 0.097$ mean spacings on $C_{20}$ against the first $100$ zeros. Replacing the cycle by a theta graph at matched parameter count yields correspondence within $\pm 0.005$, indicating that the relevant degree of freedom is the dimension of the vertex unitary group, not the graph topology. Across $K = 50$ independent GUE surrogate targets unfolded to the Riemann--von Mangoldt smooth density, the same optimizer achieves MAD $= 0.260 \pm 0.035$, with no surrogate reaching the Riemann value (Cohen's $d = 3.21$, quantile $0/50$). The construction is not a generic GUE-density fitter; it finds structure specific to the Riemann zeros.
+Under standard Neumann boundary conditions, the cycle graph $C_n$ is spectrally equivalent to a single circle of circumference $L = \sum_e l_e$ with spectrum $k_m = 2\pi m / L$, independent of $n$; the correspondence score against any target collapses to a one-parameter family in $L$ (Theorem~\ref{thm:neumann}). Per-vertex TRS-breaking phases, which preserve reflectionlessness, enlarge this to a two-parameter family $(L, \Phi)$ with empirical ceiling $\mathcal{S} \approx 0.72$ at $N = 100$ Riemann zeros. Replacing Neumann with general U(2) vertex scattering, in which the reflection amplitude $|\cos\theta_v|$ becomes free, breaks this ceiling: MAD $= 0.097$ mean spacings on $C_{20}$ against the first $100$ zeros. Replacing the cycle by a theta graph at matched parameter count yields correspondence within $\pm 0.005$, indicating that the relevant degree of freedom is the dimension of the vertex unitary group, not the graph topology. Across $K = 50$ independent GUE surrogate targets unfolded to the Riemann--von Mangoldt smooth density, the same optimizer achieves MAD $= 0.260 \pm 0.035$, with no surrogate reaching the Riemann value (empirical rank $0/50$, standardized separation $Z = 3.21$). The construction is not a generic GUE-density fitter; it finds structure specific to the Riemann zeros.
 \end{abstract}
 
 \begin{keyword}[class=MSC]
@@ -85,9 +87,9 @@ We approach the spectral correspondence problem computationally: we optimize ove
 
 \smallskip\noindent\textbf{Third.} The spectral correspondence is approximately topology-independent at fixed parameter count. Replacing $C_n$ by a theta graph with two degree-3 hub vertices under U(3) scattering and degree-2 internal vertices under U(2) scattering --- varying the path length to match the cycle parameter count --- yields scores within $\pm 0.005$ of the matched cycle at every tested parameter count up to $96$ dimensions. The unitary group dimension at vertices is the relevant axis; the graph topology supporting them is not.
 
-\smallskip\noindent\textbf{Fourth.} A direct surrogate-control experiment establishes that the U(2) construction is not a generic capacity to fit GUE-distributed targets but instead finds structure specific to the Riemann zeros. Across $K = 50$ independent GUE surrogate target sequences unfolded to the Riemann--von Mangoldt smooth counting density, the same optimization pipeline achieves MAD $= 0.260 \pm 0.035$ mean spacings, with no surrogate reaching the Riemann MAD of $0.147$ (empirical quantile $0/50$, Cohen's $d = 3.21$, base-rate floor under the null hypothesis $1.96\%$). A complementary asymmetry emerges in matched-eigenvalue counts: the optimizer places graph eigenvalues within the matching window of all $100$ surrogate targets in every one of the $50$ surrogates, while it matches only $74$ of the $100$ Riemann targets at substantially tighter precision on the matched subset.
+\smallskip\noindent\textbf{Fourth.} A direct surrogate-control experiment establishes that the U(2) construction is not a generic capacity to fit GUE-distributed targets but instead finds structure specific to the Riemann zeros. Across $K = 50$ independent GUE surrogate target sequences unfolded to the Riemann--von Mangoldt smooth counting density, the same optimization pipeline achieves MAD $= 0.260 \pm 0.035$ mean spacings, with no surrogate reaching the Riemann MAD of $0.147$ (empirical rank $0/50$; standardized separation $Z = 3.21$ in surrogate-standard-deviation units). A complementary asymmetry emerges in matched-eigenvalue counts: the optimizer places graph eigenvalues within the matching window of all $100$ surrogate targets in every one of the $50$ surrogates, while it matches only $74$ of the $100$ Riemann targets at substantially tighter precision on the matched subset.
 
-These results frame the spectral correspondence problem differently than the existing literature on quantum-graph approaches to the Riemann zeros, which has typically searched for special edge-length sequences (e.g., logarithms of primes) under fixed boundary conditions~\cite{r6,r7}. We find that edge geometry is not the carrier of the arithmetic information: the relevant freedom lives at the vertices, in the choice of self-adjoint extension. The Hilbert--P\'olya implications are suggestive but speculative. The U(2) vertex matrices we find are numerically generic --- a PSLQ integer-relation search at $50$ decimal places against bases of $\pi$, logarithms of primes up to $61$, and standard algebraic constants returns no relations with coefficients $|c| \leq 10$ at residuals below $10^{-20}$ --- so we cannot offer an analytic characterization of the optimal scattering data. We do not claim convergence of the finite quantum graph spectra to the actual Riemann zeros in the $n \to \infty$ limit, only an empirical improvement at the cycle sizes accessible to our optimization. What the results establish is that self-adjoint quantum-graph constructions exist whose first $100$ eigenvalues approximate the Riemann zeros to within $\sim 10\%$ of mean spacing, a quantitative numerical benchmark we believe to be novel for this construction class; that the relevant degree of freedom is the vertex boundary condition rather than the graph geometry; and that the construction finds structure specific to the Riemann zeros rather than to generic GUE-density targets.
+These results frame the spectral correspondence problem differently than the existing literature on quantum-graph approaches to the Riemann zeros, which has typically searched for special edge-length sequences (e.g., logarithms of primes) under fixed boundary conditions~\cite{r5,r8}. We find that edge geometry is not the carrier of the arithmetic information: the relevant freedom lives at the vertices, in the choice of self-adjoint extension. The Hilbert--P\'olya implications are suggestive but speculative. The U(2) vertex matrices we find are numerically generic --- a PSLQ integer-relation search at $50$ decimal places against bases of $\pi$, logarithms of primes up to $61$, and standard algebraic constants returns no relations with coefficients $|c| \leq 10$ at residuals below $10^{-20}$ --- so we cannot offer an analytic characterization of the optimal scattering data. We do not claim convergence of the finite quantum graph spectra to the actual Riemann zeros in the $n \to \infty$ limit, only an empirical improvement at the cycle sizes accessible to our optimization. What the results establish is that self-adjoint quantum-graph constructions exist whose first $100$ eigenvalues approximate the Riemann zeros to within $\sim 10\%$ of mean spacing, a quantitative numerical benchmark we believe to be novel for this construction class; that the relevant degree of freedom is the vertex boundary condition rather than the graph geometry; and that the construction finds structure specific to the Riemann zeros rather than to generic GUE-density targets.
 
 %% =====================================================================
 \section{Methods}
@@ -111,11 +113,25 @@ To compare graph eigenvalues $\{k_j\}$ against the first $N$ nontrivial zeros $\
 \end{equation}
 where $N_{\mathrm{smooth}}(T) = (T/2\pi)\ln(T/2\pi) - T/2\pi + 7/8$ is the Riemann--von Mangoldt smooth zero counting function and $L = \sum_e l_e$ is the total graph length. The inversion is performed pointwise via Brent's method applied to $N_{\mathrm{smooth}}(T) = L\,k_j/\pi$. This pointwise correction removes the systematic density mismatch between the uniform graph eigenvalue density $L/\pi$ and the logarithmic Riemann zero density $(2\pi)^{-1}\ln(T/2\pi)$ --- a correction that a linear rescaling cannot achieve~\cite{r8}. Rescaled eigenvalues $T_j$ falling within $\pm 1$ mean zero spacing of a target zero $\gamma_n$ form the comparison window; unmatched eigenvalues do not contribute to the score.
 
-The total score is
+The total score is a fixed convex combination of three components,
 \begin{equation}
     \mathcal{S} = 0.70\,\mathcal{S}_{\mathrm{pos}} + 0.20\,\mathcal{S}_{\mathrm{GUE}} + 0.10\,\mathcal{S}_{\mathrm{corr}},
 \end{equation}
-where $\mathcal{S}_{\mathrm{pos}}$ measures the mean absolute deviation (MAD) of matched pairs $|T_j - \gamma_n|$ normalized by mean zero spacing, $\mathcal{S}_{\mathrm{GUE}}$ compares the nearest-neighbor spacing distribution to the GUE Wigner surmise $P(s) = (32/\pi^2)\,s^2\,e^{-4s^2/\pi}$ via the Kolmogorov--Smirnov statistic~\cite{r2,r9}, and $\mathcal{S}_{\mathrm{corr}}$ measures agreement with the GUE two-point pair correlation function. All component scores are normalized to $[0,1]$ with higher values indicating better correspondence. Scoring is validated against two reference cases: self-comparison (the Riemann zeros scored against themselves) yields $\mathcal{S} = 0.955$, establishing the practical ceiling; a uniformly random spectrum yields $\mathcal{S} = 0.144$, establishing the floor.
+each normalized to $[0,1]$ with higher values indicating better correspondence. Denote the sequence of rescaled eigenvalues falling in the matching window by $\{T_j\}_{j=1}^{M}$ (in ascending order) and the matched target subsequence by $\{\gamma_{n_j}\}_{j=1}^{M}$, with $\Delta \gamma$ the mean nearest-neighbor spacing of $\{\gamma_n\}_{n=1}^{N}$. Then
+\begin{equation}
+    \mathcal{S}_{\mathrm{pos}} = \exp\!\left(-\,\frac{\mathrm{MAD}}{\Delta\gamma}\right), \qquad \mathrm{MAD} = \frac{1}{M}\sum_{j=1}^{M} \bigl|T_j - \gamma_{n_j}\bigr|,
+\end{equation}
+so an MAD of one mean spacing gives $\mathcal{S}_{\mathrm{pos}} = e^{-1} \approx 0.37$. Let $\{\tilde{k}_j\}$ denote the local polynomial unfolding of $\{T_j\}$ to unit mean density (degree $\min(5, \max(1, \lfloor M/10 \rfloor))$), $\{s_j\}$ its normalized nearest-neighbor spacings, and $F_{\mathrm{Wigner}}$ the cumulative distribution of the GUE Wigner surmise $P(s) = (32/\pi^2)\,s^2\,e^{-4s^2/\pi}$~\cite{r2}. Then
+\begin{equation}
+    \mathcal{S}_{\mathrm{GUE}} = \max\!\bigl(0,\,1 - D_{\mathrm{KS}}\bigr), \qquad D_{\mathrm{KS}} = \sup_s \bigl|\hat{F}_{\{s_j\}}(s) - F_{\mathrm{Wigner}}(s)\bigr|.
+\end{equation}
+Finally, let $\hat{R}_2(r)$ be the empirical two-point pair-correlation density of $\{\tilde{k}_j\}$ (all pairs with separation $r \in (0, 3]$, binned uniformly into $50$ bins of width $\Delta r$), and $R_2^{\mathrm{GUE}}(r)$ the GUE two-point correlation function normalized to the same domain. Then
+\begin{equation}
+    \mathcal{S}_{\mathrm{corr}} = \exp\!\left(-\sum_b \bigl(\hat{R}_2(r_b) - R_2^{\mathrm{GUE}}(r_b)\bigr)^2 \Delta r\right).
+\end{equation}
+Scoring is validated against two reference cases: self-comparison (the Riemann zeros scored against themselves) yields $\mathcal{S} = 0.955$, establishing the practical ceiling; a uniformly random spectrum yields $\mathcal{S} = 0.144$, establishing the floor.
+
+The matching window is defined by $|T_j - \gamma_n| \leq \Delta\gamma$ and applied greedily in ascending order of $j$: eigenvalue $T_j$ is matched to the nearest as-yet-unmatched target zero within its window; eigenvalues whose window contains no unmatched target do not contribute. This produces a one-to-one, order-preserving pairing between a subset of $\{T_j\}$ and a subset of $\{\gamma_n\}$. The MAD in $\mathcal{S}_{\mathrm{pos}}$ is taken over matched pairs only; the matched count $M$ is reported alongside MAD for every comparison so that per-pair precision and coverage can be assessed jointly.
 
 \subsection{Vertex scattering parameterizations}
 \label{sec:methods-scattering}
@@ -135,7 +151,26 @@ introducing 4 real degrees of freedom per vertex. For degree $d > 2$ we paramete
 \subsection{Optimization}
 \label{sec:methods-opt}
 
-Joint optimization over edge lengths and scattering parameters is performed using covariance-matrix adaptation evolution strategy (CMA-ES)~\cite{r11} with population size $\lambda = 4 + \lfloor 3 \ln \dim \rfloor$, initial step size $\sigma_0 = 0.5$, and a budget of $7.5 \times 10^4$ to $10^5$ function evaluations per restart. The CMA-ES solution is polished by Nelder--Mead local refinement to tolerance $10^{-8}$. The objective is $1 - \mathcal{S}$ (minimization). Results reported represent the best solution found across $10$ to $30$ independent restarts from uniformly random initializations.
+{\sloppy Two black-box optimizers are used in this study. The exhaustive 7-vertex sweep (Section~\ref{sec:results-topology}) employs differential evolution (SciPy's \texttt{differential\_evolution} with the \texttt{best1bin} strategy, population size $15$, mutation $\in [0.5, 1.0]$, recombination $0.7$, and $10^4$ function evaluations per graph), chosen for throughput across $457$ graphs at moderate parameter dimension.\par} All remaining experiments (cycle scaling under Neumann, TRS-broken Neumann, and U(2) scattering; theta-graph comparison; U(3) extensions; and the surrogate control) use the covariance-matrix adaptation evolution strategy (CMA-ES~\cite{r11}, \texttt{cma} Python package version $3.3.0$) with population size $\lambda = 4 + \lfloor 3 \ln n_{\mathrm{param}} \rfloor$, initial step size $\sigma_0 = 0.5$, and a budget of $7.5 \times 10^4$ to $10^5$ function evaluations per restart. In both pipelines the black-box optimizer is followed by a Nelder--Mead local polish (SciPy, tolerance $10^{-8}$). The optimization objective is $1 - \mathcal{S}$. Results reported represent the best solution found across $10$ to $30$ independent restarts from uniformly random initializations, unless noted otherwise. Edge lengths are bounded to $l_e \in [0.05, 5]$ throughout; no explicit scale-fixing constraint is imposed on $L = \sum_e l_e$ because the Weyl rescaling of Section~\ref{sec:methods-scoring} absorbs a global length rescaling into the map $k_j \mapsto T_j$, so $L$ is only a soft optimization variable rather than a physical unit choice.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}lllc@{}}
+\hline
+Section & Experiment & Scattering & Optimizer \\
+\hline
+\ref{sec:results-topology} & $7$-vertex enumeration ($457$ graphs) & TRS-broken Neumann & DE \\
+\ref{sec:results-neumann} & Cycle $C_n$ Neumann ceiling & Pure Neumann & CMA-ES \\
+\ref{sec:results-neumann} & Cycle $C_n$ TRS-broken ceiling & TRS-broken Neumann & CMA-ES \\
+\ref{sec:results-U2} & $C_7$, cycle-size scaling $C_5$--$C_{21}$ & U(2) & CMA-ES \\
+\ref{sec:results-topology-indep} & Theta $\Theta_k$ topology comparison & U(2), U(3) & CMA-ES \\
+\ref{sec:results-surrogate} & GUE surrogate control ($K=50$) & U(2) on $C_7$ & CMA-ES \\
+\hline
+\end{tabular}
+\caption{Mapping of manuscript experiments to graph family, scattering-matrix family, and black-box optimizer. All pipelines are followed by a Nelder--Mead polish.}
+\label{tab:experiment-map}
+\end{table}
 
 \subsection{Verification protocol}
 \label{sec:methods-verify}
@@ -149,14 +184,14 @@ The spectrum computation is sensitive to the secular determinant sampling resolu
 \subsection{Topology search at 7 vertices}
 \label{sec:results-topology}
 
-We performed exhaustive enumeration of all $853$ non-isomorphic connected graphs on $7$ vertices. Of these, $457$ received full joint optimization over edge lengths and TRS-breaking phases via differential evolution; the remaining $396$, all having 12 or more edges, were excluded after a preliminary screen confirmed that no graph with more than 11 edges exceeded $\mathcal{S} = 0.53$ in the optimized subset, establishing a monotonic score--edge-count relationship that made further evaluation redundant.
+We performed exhaustive enumeration of all $853$ non-isomorphic connected graphs on $7$ vertices, scored against the first $N = 20$ Riemann zeros (the reduced $N$ was used at this stage for throughput across $853$ candidates; all subsequent results in Sections~\ref{sec:results-neumann}--\ref{sec:results-surrogate} use $N = 100$). Of these, $457$ received full joint optimization over edge lengths and per-vertex TRS-breaking phases $\theta_v$ (Section~\ref{sec:methods-scattering}, ``TRS-broken Neumann'' family) via differential evolution; the remaining $396$, all having $12$ or more edges, were excluded after a preliminary screen. The preliminary screen ran the same differential-evolution pipeline with $10^3$ evaluations per graph (rather than the $10^4$ used for the full sweep) on a random subsample of $50$ of the excluded graphs distributed uniformly across the $12$--$21$ edge range; the maximum $\mathcal{S}$ observed in this screen was $0.53$. The exclusion is therefore an evidence-based extrapolation, not a proof: we cannot rule out that a graph with $\geq 12$ edges reaches $\mathcal{S} > 0.53$ under a larger evaluation budget, but the observed monotone decay with edge count (Figure~\ref{fig:scoreVsEdges}) makes this unlikely.
 
-The cycle $C_7$ achieves the highest score $\mathcal{S} = 0.795$, well above the second-best graph (index $\#110$, degree sequence $[3,3,2,2,2,2,2]$, two independent cycles) at $\mathcal{S} = 0.762$. Across the $457$ optimized graphs, scores distribute broadly (mean $0.486$, std $0.095$, median $0.485$) and correlate inversely with edge count (Pearson $r = -0.70$): every additional edge degrades the match (Figure~\ref{fig:scoreVsEdges}). The 7-edge and 8-edge graphs dominate the top 20; no graph with more than 10 edges exceeds $\mathcal{S} = 0.71$. Among the optimized graphs, $55$ exhibit three or more edges systematically driven to the optimizer's lower bound ($l_e < 0.05$), effectively collapsing the graph toward a simpler topology. This suggests the relevant spectral structure is carried by the minimal cycle, not by additional connectivity, and motivates focusing on cycle graphs $C_n$ for the remainder of the study.
+Under this TRS-broken Neumann scoring, the cycle $C_7$ achieves the highest score $\mathcal{S} = 0.795$ (at $N = 20$), well above the second-best graph (index $\#110$, degree sequence $[3,3,2,2,2,2,2]$, two independent cycles) at $\mathcal{S} = 0.762$. This value is consistent with the TRS-broken Neumann ceiling at $\mathcal{S} \approx 0.72$ measured at $N = 100$ (Corollary~\ref{cor:ceiling}, Remark~\ref{rem:trs}): scores at $N = 20$ are higher than at $N = 100$ because the two-parameter $(L, \Phi)$ family has more angular freedom relative to $20$ than to $100$ target constraints. Across the $457$ optimized graphs, scores distribute broadly (mean $0.486$, std $0.095$, median $0.485$) and correlate inversely with edge count (Pearson $r = -0.70$): every additional edge degrades the match (Figure~\ref{fig:scoreVsEdges}). The 7-edge and 8-edge graphs dominate the top 20; no graph with more than 10 edges exceeds $\mathcal{S} = 0.71$. Among the optimized graphs, $55$ exhibit three or more edges systematically driven to the optimizer's lower bound ($l_e < 0.05$), effectively collapsing the graph toward a simpler topology. This suggests the relevant spectral structure is carried by the minimal cycle, not by additional connectivity, and motivates focusing on cycle graphs $C_n$ for the remainder of the study.
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{results/figure1_score_vs_edges.png}
-\caption{Score versus edge count for all 457 optimized 7-vertex graphs under Neumann scattering (blue points). The cycle $C_7$ (red circle, 7 edges) achieves the highest Neumann score $\mathcal{S} = 0.795$. Score correlates inversely with edge count (Pearson $r = -0.70$). The orange star shows $C_7$ under optimized U(2) vertex scattering ($\mathcal{S} = 0.897$), demonstrating that the same topology under general unitary vertex conditions breaks decisively through the Neumann ceiling. Dashed horizontal lines indicate the Neumann ceiling ($\mathcal{S} = 0.72$), the U(2) result ($\mathcal{S} = 0.897$), and the self-comparison ceiling ($\mathcal{S} = 0.955$).}
+\caption{Score versus edge count for all $457$ optimized $7$-vertex graphs under TRS-broken Neumann scattering, evaluated at $N = 20$ Riemann zeros (blue points). The cycle $C_7$ (red circle, $7$ edges) achieves the highest TRS-broken Neumann score $\mathcal{S} = 0.795$. Score correlates inversely with edge count (Pearson $r = -0.70$). The orange star shows $C_7$ under optimized U(2) vertex scattering (evaluated at $N = 100$, $\mathcal{S} = 0.897$), demonstrating that the same topology under general unitary vertex conditions breaks decisively through the TRS-broken Neumann ceiling. Dashed horizontal lines indicate the TRS-broken Neumann ceiling at $N = 100$ ($\mathcal{S} \approx 0.72$; Corollary~\ref{cor:ceiling}), the $C_7$ U(2) result at $N = 100$ ($\mathcal{S} = 0.897$), and the self-comparison ceiling at $N = 100$ ($\mathcal{S} = 0.955$). The pure-Neumann ceiling ($\mathcal{S} \approx 0.092$ at $N = 100$; Theorem~\ref{thm:neumann}) is not shown because pure-Neumann scattering was not used in the 7-vertex sweep.}
 \label{fig:scoreVsEdges}
 \end{figure}
 
@@ -199,7 +234,7 @@ The TRS-broken Neumann spectrum is therefore a two-parameter rigid family $(L, \
 The ceiling in Corollary~\ref{cor:ceiling} and its TRS-broken extension in Remark~\ref{rem:trs} are both consequences of a single structural property: $\sigma_x$ and $D_v \sigma_x D_v^\dagger$ are both reflectionless at degree-2 vertices ($S_{ii} = 0$). In the standard parameterization of a general U(2) vertex scattering matrix (Section~\ref{sec:methods-scattering}), the reflection magnitude at vertex $v$ is $|\cos\theta_v|$, and the Neumann case corresponds to $\theta_v = \pi/2$ (zero reflection). The transition from $\mathcal{S} \approx 0.72$ to $\mathcal{S} \approx 0.90$ reported in Section~\ref{sec:results-U2} is therefore the consequence of allowing nonzero reflection at the degree-2 vertices, not of unitary freedom per se. We elevate this to a formal observation: it is reflection, not the additional phase parameters of U(2), that lifts the spectrum out of the rigid two-parameter family.
 \end{rem}
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{results/figure2_neumann_residuals.png}
 \caption{Per-zero residuals $|T_j - \gamma_n|$ for cycle graphs $C_7$, $C_{10}$, $C_{14}$, $C_{18}$ under pure Neumann scattering, plotted against zero index. All four cycle sizes produce indistinguishable residuals (all $\mathcal{S} = 0.092$), confirming the size-independence of the Neumann ceiling. Dotted and dashed lines indicate residuals of $0.5$ and $1.0$ mean spacings respectively.}
@@ -222,7 +257,7 @@ Extending the joint optimization to cycle sizes $C_5$ through $C_{21}$, with $10
 
 \paragraph{Reproducibility of the $C_{20}$ best result.} The single highest-scoring graph in this study, $C_{20}$ at $\mathcal{S} = 0.9258$, requires careful interpretation. Re-scoring the saved parameters from scratch reproduces $\mathcal{S} = 0.92580628$ to 16-digit precision across five replicate scorings, with score sensitivity to spectrum sampling resolution of $\pm 0.0003$ across $n_{\mathrm{points}} \in \{1500, 8000\}$ --- confirming that the result is a mathematically valid score of the saved configuration. However, this graph was found in $1$ of $10$ random initializations during the cycle-size sweep, and $24$ subsequent CMA-ES restarts initialized in a Gaussian neighborhood ($\sigma_{\mathrm{edge}} = 0.3$, $\sigma_{\mathrm{scat}} = 0.5$) of these parameters failed to reach $\mathcal{S} = 0.9258$ --- the best refinement restart reached $\mathcal{S} = 0.9176$, with mean $0.902 \pm 0.008$. The $\mathcal{S} = 0.9258$ point therefore represents a narrow local optimum rather than the floor of a broad basin: a valid configuration whose existence we report, but not the typical outcome of optimization. The reproducible-by-optimization score at $C_{20}$ is $\mathcal{S} \approx 0.91$, with MAD $\approx 0.13$ mean spacings.
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{results/u2_scaling_plot.png}
 \caption{Cycle-size scaling of best-of-restart score (left axis, blue) and best-of-restart MAD (right axis, red) under U(2) vertex scattering, across cycle sizes $C_5$ through $C_{21}$. Error bars on score show standard deviation across 10 restarts per size. Reference lines mark the $C_7$ Neumann ceiling ($0.720$), the original $C_7$ U(2) result ($0.897$), and the self-comparison ceiling ($0.955$).}
@@ -254,18 +289,18 @@ The U(2) correspondence at MAD $\approx 0.15$ mean spacings against the first $1
 
 We performed this control experiment by drawing $K = 50$ independent GUE surrogate target sequences and running the identical optimization pipeline against each. Each surrogate is generated by (a) sampling eigenvalues of a $400 \times 400$ Gaussian Unitary Ensemble matrix, (b) taking the central $100$ eigenvalues for cleanest bulk statistics, (c) polynomial-unfolding to a staircase function, and (d) mapping back through $N_{\mathrm{smooth}}^{-1}$ so the surrogate's smooth counting density matches the Riemann--von Mangoldt density at the location of the first $100$ zeros. The resulting surrogate sequences possess GUE local statistics by construction (spacing coefficient of variation $0.45 \pm 0.05$, matching the Riemann value of $0.465$) and Riemann smooth counting density (mean spacing $2.21 \pm 0.04$, Riemann value $2.246$), with no Riemann arithmetic information. The optimization pipeline ($C_7$ topology, U(2) vertex scattering, CMA-ES with $5$ restarts and $7.5 \times 10^4$ evaluations per restart, Nelder--Mead polish) is bit-identical to the pipeline used against the Riemann zeros.
 
-The surrogate distribution converged with growing $K$. At the $K = 50$ sample size the optimizer reaches MAD $= 0.260 \pm 0.035$ mean spacings (mean $\pm$ std, $N = 50$), with minimum $0.206$, maximum $0.377$, median $0.259$. The Riemann result at MAD $= 0.147$ is better than every one of the $50$ surrogates (empirical quantile $0/50$); Cohen's $d = 3.21$. The base-rate floor at $K = 50$ --- the probability under the GENERIC null hypothesis that a single trial would produce a $0/50$ quantile by chance --- is $1/(K+1) \approx 1.96\%$, well below conventional significance thresholds. Figure~\ref{fig:surrogateHist} shows the surrogate MAD distribution with the Riemann baseline overlaid.
+We report the surrogate analysis as a descriptive comparison rather than as a formal hypothesis test, because the underlying pipeline is a stochastic adaptive optimizer and constructing a valid end-to-end null distribution over the joint space of (target sequence, optimizer trajectory, restart best) is not attempted here. At the $K = 50$ sample size the optimizer reaches MAD $= 0.260 \pm 0.035$ mean spacings across surrogates (mean $\pm$ standard deviation over $K = 50$ per-surrogate best-of-restart MAD values), with minimum $0.206$, maximum $0.377$, median $0.259$. The Riemann result at MAD $= 0.147$ lies below the minimum of all $50$ surrogate MADs; its empirical rank against the surrogate distribution is therefore $0/50$. The standardized deviation of the Riemann MAD from the surrogate mean, expressed in surrogate-standard-deviation units, is $Z = (0.260 - 0.147)/0.035 = 3.21$. We report $Z$ in place of Cohen's $d$ because the Riemann side is a single point rather than a second sample distribution, so a $d$-statistic is not well-defined here; the numerical value coincides with what one would compute from the naive plug-in formula and is included solely as a magnitude of separation. The observation that $Z > 3$ and rank $= 0/50$ is descriptive: it states that the observed Riemann outcome is far outside the surrogate distribution as summarized. It is not a $p$-value against a specified null, and we do not claim conventional significance thresholds. Figure~\ref{fig:surrogateHist} shows the surrogate MAD distribution with the Riemann baseline overlaid.
 
 A complementary asymmetry emerged in the matched-eigenvalue counts: the optimizer placed graph eigenvalues within the $\pm 1$-mean-spacing matching window of all $100$ surrogate targets in every one of the $50$ surrogates (matched count $100.0 \pm 0.0$), while it matched only $74$ of the $100$ Riemann targets at substantially tighter MAD on the matched subset. The optimizer can therefore fit more surrogate targets at worse positional precision, or fewer Riemann targets at better positional precision. The result is not consistent with generic GUE-density fitting, under which surrogates and Riemann should produce comparable matched counts and comparable MADs.
 
 We interpret the surrogate control as direct evidence that the U(2) cycle construction is not a generic spectral fitter for GUE-density targets. The construction finds structure specific to the Riemann zeros: it achieves substantially tighter local alignment on a subset of Riemann targets than it can achieve on any of the $50$ independent GUE surrogates we tested. We do not characterize what this structure is --- the PSLQ analysis of Section~\ref{sec:results-pslq} establishes that whatever structure is present is not visible as integer relations at $50$ decimal places of precision against simple bases --- but we establish that its existence is empirically required by the surrogate-versus-Riemann comparison. We do not interpret the surrogate result as evidence about whether the optimizer is approaching the Riemann zeros in any well-defined limit. The MAD $= 0.147$ correspondence we observe is finite and significantly worse than the self-comparison reference of $\mathcal{S} = 0.955$; the surrogate control establishes only that the result is not a generic property of GUE-density targets, not that it is converging toward a Hilbert--P\'olya operator. That stronger claim remains an open question.
 
-All surrogate seeds, per-surrogate optimization records, and aggregate statistics are deposited in \texttt{results/gue\_surrogate\_control.jsonl} and \texttt{results/gue\_surrogate\_control\_summary.json} in the public repository.
+{\sloppy All surrogate seeds, per-surrogate optimization records, and aggregate statistics are deposited in the files \texttt{gue\_surrogate\_control.jsonl} and \texttt{gue\_surrogate\_control\_summary.json} under \texttt{results/} in the public repository.\par}
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{results/figure4_surrogate_distribution.png}
-\caption{GUE surrogate MAD distribution versus the Riemann baseline. Histogram of best-of-restart MADs across $K = 50$ independent GUE surrogate sequences unfolded to the Riemann--von Mangoldt smooth density (blue). Vertical red line: Riemann MAD $= 0.147$. Dashed line: surrogate mean. Gray band: surrogate mean $\pm$ std. No surrogate reaches the Riemann value; Cohen's $d = 3.21$, empirical quantile $0/50$, base-rate floor $1/(K+1) \approx 2.0\%$.}
+\caption{GUE surrogate MAD distribution versus the Riemann baseline. Histogram of best-of-restart MADs across $K = 50$ independent GUE surrogate sequences unfolded to the Riemann--von Mangoldt smooth density (blue). Vertical red line: Riemann MAD $= 0.147$. Dashed line: surrogate mean. Gray band: surrogate mean $\pm$ standard deviation. No surrogate reaches the Riemann value; the Riemann outcome lies at empirical rank $0/50$, at $Z = 3.21$ standardized surrogate-standard-deviation units below the surrogate mean. Reported as descriptive statistics, not as a formal hypothesis test (Section~\ref{sec:results-surrogate}).}
 \label{fig:surrogateHist}
 \end{figure}
 
@@ -386,14 +421,20 @@ Colloquium: Physics of the Riemann hypothesis,
 \bibitem{r9}
 B. Riemann,
 \textit{\"Uber die Anzahl der Primzahlen unter einer gegebenen Gr\"osse},
-Monatsberichte der Berliner Akademie (1859).
-% MR: N/A (1859 work)
+Monatsberichte der Berliner Akademie (November 1859),
+reprinted in H. Weber (ed.),
+\textit{Bernhard Riemann's Gesammelte Mathematische Werke},
+2nd ed., Teubner, Leipzig (1892), pp.~145--155;
+English translation in H.~M. Edwards,
+\textit{Riemann's Zeta Function},
+Academic Press (1974), Appendix.
+% MR: MR0466039 (Edwards)
 
 \bibitem{r10}
 G. Berkolaiko and P. Kuchment,
 \textit{Introduction to Quantum Graphs},
 American Mathematical Society, Providence, RI (2013).
-% MR: TBD
+% MR: MR3013208
 
 \bibitem{r11}
 N. Hansen,
