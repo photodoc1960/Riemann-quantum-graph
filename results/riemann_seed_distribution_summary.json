@@ -1,0 +1,50 @@
+{
+  "config": {
+    "n_vertices": 7,
+    "n_zeros": 100,
+    "n_seeds": 30,
+    "n_restarts": 5,
+    "n_evals": 75000,
+    "seed_offset": 100000
+  },
+  "n_seeds_completed": 30,
+  "n_seeds_valid": 30,
+  "distribution": {
+    "n": 30,
+    "mad_mean": 0.14799195417594682,
+    "mad_std": 0.005801906591985639,
+    "mad_min": 0.13334568274891678,
+    "mad_max": 0.15911158529173483,
+    "mad_median": 0.14841640906899,
+    "mad_q05": 0.14044414074867498,
+    "mad_q25": 0.14342036739861863,
+    "mad_q75": 0.15175219840844892,
+    "mad_q95": 0.15723218321055216,
+    "mad_iqr": 0.008331831009830287,
+    "score_mean": 0.8915021715562261,
+    "score_std": 0.0037452963011139423,
+    "score_max": 0.8987134429300712,
+    "n_matched_mean": 100.0,
+    "n_matched_std": 0.0,
+    "n_matched_min": 100,
+    "n_matched_max": 100
+  },
+  "comparison_to_surrogate": {
+    "surrogate_source": "results/gue_surrogate_control.jsonl",
+    "surrogate_n": 50,
+    "surrogate_mad_mean": 0.2601607518208184,
+    "surrogate_mad_std": 0.035561869770031486,
+    "surrogate_mad_median": 0.2590766806197659,
+    "surrogate_mad_min": 0.20605340320506504,
+    "riemann_median_vs_surrogate_rank": "0/50",
+    "prob_riemann_ge_surrogate": 0.0,
+    "mann_whitney_u_test": {
+      "n_x": 30,
+      "n_y": 50,
+      "u_statistic": 0.0,
+      "p_value": 9.434242897404926e-14,
+      "alternative": "two-sided"
+    }
+  },
+  "verdict": "RIEMANN_DISTRIBUTION_DOMINATES_SURROGATE"
+}
