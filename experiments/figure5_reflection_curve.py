@@ -66,6 +66,26 @@ def main() -> None:
     scores = np.array([r["best_score"] for r in records])
     mads = np.array([r["best_mad_mean_spacings"] for r in records])
 
+    # Per-theta restart-level mean and standard deviation across the 5
+    # CMA-ES restarts. Used for error bands showing that the inverted-U
+    # shape is well outside restart noise.
+    restart_score_mean = np.array([
+        float(np.mean([rr["score"] for rr in r["restart_records"]]))
+        for r in records
+    ])
+    restart_score_std = np.array([
+        float(np.std([rr["score"] for rr in r["restart_records"]], ddof=1))
+        for r in records
+    ])
+    restart_mad_mean = np.array([
+        float(np.mean([rr["mad_mean_spacings"] for rr in r["restart_records"]]))
+        for r in records
+    ])
+    restart_mad_std = np.array([
+        float(np.std([rr["mad_mean_spacings"] for rr in r["restart_records"]], ddof=1))
+        for r in records
+    ])
+
     peak_idx = int(np.argmax(scores))
     peak_cos = float(cos_theta[peak_idx])
     peak_score = float(scores[peak_idx])
@@ -76,6 +96,18 @@ def main() -> None:
     )
 
     # ---- Left panel: score ----
+    ax_s.fill_between(
+        cos_theta,
+        restart_score_mean - restart_score_std,
+        restart_score_mean + restart_score_std,
+        color="#1a3a5a", alpha=0.18,
+        label="Restart mean $\\pm$ SD ($n = 5$/point)",
+    )
+    ax_s.plot(
+        cos_theta, restart_score_mean,
+        marker="", linestyle=":", color="#1a3a5a",
+        linewidth=1.5, alpha=0.7,
+    )
     ax_s.plot(
         cos_theta, scores,
         marker="o", markersize=8,
@@ -104,6 +136,18 @@ def main() -> None:
     ax_s.set_ylim(0.70, 0.92)
 
     # ---- Right panel: MAD ----
+    ax_m.fill_between(
+        cos_theta,
+        restart_mad_mean - restart_mad_std,
+        restart_mad_mean + restart_mad_std,
+        color="#7b1c14", alpha=0.15,
+        label="Restart mean $\\pm$ SD ($n = 5$/point)",
+    )
+    ax_m.plot(
+        cos_theta, restart_mad_mean,
+        marker="", linestyle=":", color="#7b1c14",
+        linewidth=1.5, alpha=0.7,
+    )
     ax_m.plot(
         cos_theta, mads,
         marker="s", markersize=7,
